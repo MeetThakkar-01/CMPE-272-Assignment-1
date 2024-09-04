@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-service
+  template:
+    metadata:
+      labels:
+        app: hello-world-service
+    spec:
+      containers:
+      - name: hello-world-service
+        image: meet1699/hello-world-service:latest
+        ports:
+        - containerPort: 8083
+        env:
+        - name: SPRING_CLOUD_CONFIG_URI
+          value: "http://config-server:8088"

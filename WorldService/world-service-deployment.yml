@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: world-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: world-service
+  template:
+    metadata:
+      labels:
+        app: world-service
+    spec:
+      containers:
+      - name: world-service
+        image: meet1699/world-service:latest
+        ports:
+        - containerPort: 8082
+        env:
+        - name: SPRING_CLOUD_CONFIG_URI
+          value: "http://config-server:8088"
