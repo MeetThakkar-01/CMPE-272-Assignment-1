@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server
+  name: config-server-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: config-server
+      app: config-server-service
   template:
     metadata:
       labels:
-        app: config-server
+        app: config-server-service
     spec:
       containers:
-      - name: config-server
-        image: meet1699/config-server:latest
+      - name: config-server-service
+        image: meet1699/config-server-service:latest
         ports:
         - containerPort: 8088

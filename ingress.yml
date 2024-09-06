@@ -5,6 +5,16 @@ metadata:
   name: example-ingress
 spec:
   rules:
+  - host: config.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: config-server-service
+            port:
+              number: 8088
   - host: hello.example.com
     http:
       paths:
@@ -25,7 +35,7 @@ spec:
             name: world-service
             port:
               number: 8082
-  - host: world.example.com
+  - host: hello-world.example.com
     http:
       paths:
       - path: /
